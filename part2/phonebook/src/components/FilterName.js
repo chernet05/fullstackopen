@@ -9,6 +9,5 @@ export default function FilterNameHandler(event, props) {
   })
   //searched state is changed to true and the matched people are sent to the 'setFilterList' state.
   setSearched('True')
-  console.log(matchingPerson, matchingPerson)
   setFilterList(matchingPerson);
 }

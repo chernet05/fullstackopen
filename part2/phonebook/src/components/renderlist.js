@@ -2,7 +2,6 @@ const RenderList = (props) => {
     const { searched, filterValue, filterList, persons, remove } = props;
     if (filterList.length > 0) {
         let ans = filterList.map((x, i) => {
-            console.log(x, "filterlist")
             return (<div key={x.id + "div"}>
                 <span>{x.name} </span>
                 <span>{x.number}</span>

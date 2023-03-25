@@ -46,7 +46,6 @@ const App = () => {
       .then(res => {
         if (res.status == '200') {
           setPersons((prevState) => {
-            console.log(res, "status", res.data)
             setMessage({ message: `Person ${name} was removed`, code: 'red' })
             let returns = prevState.filter((x) => {
 
