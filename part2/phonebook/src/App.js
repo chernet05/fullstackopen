@@ -5,11 +5,10 @@ import FilterNameForm from './components/FilterNameForm';
 import RenderList from './components/renderlist';
 import Message from './components/Message'
 import axios from 'axios';
-const baseUrl = 'http://localhost:3001/api/persons'
+const baseUrl = 'http://localhost:3001/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([])
-  //const [per, setPer] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filterValue, setFilterValue] = useState('')
@@ -43,7 +42,7 @@ const App = () => {
     setSearched('False')
   }
   function remove(e, id, name) {
-    axios.delete('baseUrl' + id,)
+    axios.delete(baseUrl + '/' + id,)
       .then(res => {
         if (res.status == '200') {
           setPersons((prevState) => {
@@ -59,20 +58,7 @@ const App = () => {
       })
       .catch((err) => console.log(err))
   }
-  // function gm() {
-  //   setTimeout(() => {
-  //     console.log(document.getElementById('mess').style.display)
-  //     document.getElementById('mess').style.display = 'block';
-  //     //setMessage(null)
-  //   }, 0)
-  //   setTimeout(() => {
-  //     console.log(document.getElementById('mess').style.display)
-  //     document.getElementById('mess').style.display = 'none';
-  //     //setMessage(null)
-  //   }, 30000)
-  // }
-  // useEffect(gm, [messages])
-  // useEffect(gm, [messages])
+
 
 
   return (

@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useEffect } from "react";
-const baseUrl = 'http://localhost:3001/api/persons';
+const baseUrl = 'http://localhost:3001/persons';
 export default function PersonSetter(e, props) {
   e.preventDefault();
   // if the name matches an existing name, it's added to duplicate list with its ID
@@ -17,7 +17,7 @@ export default function PersonSetter(e, props) {
       // if the id matches, number in the database is changed and updated array is returned
       let ans = copy.map((existPerson) => {
         if (existPerson.id === duplicate[0].id) {
-          axios.put(`baseUrl${existPerson.id}`, { 'number': newNumber })
+          axios.put(`${baseUrl}/${existPerson.id}`, { 'number': newNumber })
             .then((response) => {
               if (response.status == 200) {
                 existPerson.number = newNumber
@@ -37,7 +37,7 @@ export default function PersonSetter(e, props) {
     alert("You need a name")
   } else {
     // if name is new then add it to the database array
-    axios.post('baseUrl', { 'name': newName, 'number': newNumber })
+    axios.post(baseUrl, { 'name': newName, 'number': newNumber })
       .then(res => {
         setPersons(persons.concat(res.data));
         setMessage({ message: `${res.data.name} was added`, code: 'green' })
